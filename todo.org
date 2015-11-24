@@ -1,0 +1,44 @@
+#+STARTUP: indent
+
+* currently working on
+** Polish http.Request/Response to a shine to get ready for scripting
+* todo list
+** TODO For multipart forms, make sure metadata lines end in \r\n
+
+* Important features
+** TODO Easy session handling and switching
+- Option to create session from request
+- By default put session in foreground and end it by hitting enter, have option to background it
+- Can't edit contacts
+
+* Random, easy to implement features
+** DONE "lite" mode
+- Don't make files in current directory
+- Use default config
+- Use sqlite db in /tmp, delete when quitting
+** DONE Request.url setter/getter
+- Request.url = 'https://www.google.com'
+** TODO Inline decoders/encoders
+- optionally go straight to/from clipboard
+** TODO Add id aliases and have "load_request/load_response" handle it transparently
+- ie map r1 to 123
+- Could be temporary or stored in db?
+- Or we could give requests that we want to last for the session an id
+  - then load_from_request can check that session-long id in memory and return it without touching the db
+- Make the context sort by time
+** DONE Use pygments to add syntax hilighting to printing requests
+- And option to not do it
+** TODO Compare mode
+- Pick any number of requests (usually 2) and look at them all at the same time in vim
+
+** DONE Change rsp len from None to N/A
+** DONE Honor $EDITOR for interceptor
+** DONE Make it easier to quit interceptor after a request
+** TODO Let interceptor take filter string
+* Performance
+** TODO Have context keep a max number of requests in memory at a time
+- Then if ls needs more, have it load that many then prune again
+- Could maybe somehow do it by request size
+
+* Tracking github
+  git checkout --track -b gh github/master
